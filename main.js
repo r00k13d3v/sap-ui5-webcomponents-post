@@ -1,11 +1,10 @@
 import "@ui5/webcomponents/dist/Button";
+import "./components/table.js";
+import "./components/shell.js";
+import "./components/buttons.js";
 
-const button = document.createElement("ui5-button");
-button.textContent = "Click Me";
 
-button.addEventListener("click", () => {
-  alert("Hello World!");
-});
 
-document.querySelector('#app').appendChild(button);
+
+
 

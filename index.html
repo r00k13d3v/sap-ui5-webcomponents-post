@@ -2,9 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-  </head>
-  <body>
-    <div id="app"></div>
     <script type="module" src="/main.js"></script>
+    <style>
+      ui5-table-row:hover > * {
+        background-color: #e8e8e8ab !important;
+        transition: background-color 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0 auto; padding: 0">
+    <div id="shell"></div>
+    <section style="margin: 10px">
+      <div id="table" style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)"></div>
+
+      <div style="display: flex; justify-content: center; margin-top: 10px">
+        <div id="button-prev"></div>
+        <div id="page" page=1 style="margin: 10px"></div>
+        <div id="button-next"></div>
+      </div>
+    </section>
   </body>
 </html>

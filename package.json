@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@ui5/webcomponents": "^1.7.1",
-    "@ui5/webcomponents-fiori": "^1.7.1"
+    "@ui5/webcomponents-fiori": "^1.7.1",
+    "axios": "^0.27.2"
   }
 }
