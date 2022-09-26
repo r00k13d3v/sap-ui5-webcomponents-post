@@ -3,27 +3,60 @@ import "@ui5/webcomponents/dist/TableColumn";
 import "@ui5/webcomponents/dist/TableRow";
 import "@ui5/webcomponents/dist/TableCell";
 
+const tableConfig = {
+  columns: [
+    {
+      header: "Character",
+      default: "No Name",
+      demandPopin: false,
+      demandText: "Name",
+      "min-width": "600",
+    },
+    {
+      header: "Specie",
+      demandPopin: true,
+      demandText: "Specie",
+      "min-width": "600",
+    },
+    {
+      header: "Status",
+      demandPopin: true,
+      demandText: "Status",
+      "min-width": "600",
+    },
+    {
+      header: "Image",
+      demandPopin: true,
+      demandText: "Image",
+      "min-width": "600",
+    },
+  ],
+};
+
 export async function refreshTable(page) {
   const domTable = document.getElementById("table");
   domTable.innerHTML = "";
   const table = document.createElement("ui5-table");
+  //make table scrollable
+  table.style = `max-height: ${window.innerHeight - 130}px; scroll-behavior: smooth; overflow-y: scroll;`;
   const height = window.innerHeight - 130;
   table.setAttribute("sticky-column-header", true);
-  table.style = `max-height: ${height}px; scroll-behavior: smooth; overflow-y: scroll;`;
-  let columns = [
-    document.createElement("ui5-table-column"),
-    document.createElement("ui5-table-column"),
-    document.createElement("ui5-table-column"),
-    document.createElement("ui5-table-column"),
-  ];
-  columns[0].innerHTML = "<span>Character</span>";
-  columns[0].slot = "columns";
-  columns[1].innerHTML = "<span>Specie</span>";
-  columns[1].slot = "columns";
-  columns[2].innerHTML = "<span>Status</span>";
-  columns[2].slot = "columns";
-  columns[3].innerHTML = "<span>Image</span>";
-  columns[3].slot = "columns";
+  let columns = [];
+
+  tableConfig.columns.forEach((column) => {
+    const domColumn = document.createElement("ui5-table-column");
+    domColumn.innerHTML = `<span>${column.header}</span>`;
+
+    if (column.demandPopin) {
+      domColumn.setAttribute("demand-popin", column["demandPopin"]);
+      domColumn.setAttribute("min-width", column["min-width"]);
+      domColumn.setAttribute("popin-text", column["demandText"]);
+    }
+
+    domColumn.slot = "columns";
+    columns.push(domColumn);
+  });
+
   table.innerHTML = columns.map((column) => column.outerHTML).join("");
 
   var settings = {

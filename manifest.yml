@@ -1,0 +1,7 @@
+---
+applications:
+  - name: ui5-web-components-vanilla
+    memory: 56M
+    path: ./approuter
+    env:
+      SEND_XFRAMEOPTIONS: false

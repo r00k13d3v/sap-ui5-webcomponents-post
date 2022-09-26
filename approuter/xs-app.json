@@ -1,6 +1,6 @@
 {
   "welcomeFile": "dist/index.html",
-  "authenticationMethod": "route",
+  "authenticationMethod": "none",
   "logout": {
     "logoutEndpoint": "/do/logout"
   },
@@ -8,13 +8,13 @@
     {
       "source": "^/dist/(.*)$",
       "target": "$1",
-      "authenticationType": "xsuaa",
+      "authenticationType": "none",
       "localDir": "dist"
     },
     {
       "source": "^/assets/(.*)$",
       "target": "$1",
-      "authenticationType": "xsuaa",
+      "authenticationType": "none",
       "localDir": "dist/assets"
     }
   ]
